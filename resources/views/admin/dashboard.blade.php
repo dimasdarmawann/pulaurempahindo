@@ -11,6 +11,7 @@
 
 <div class="container my-5">
     <div class="row g-4">
+
         <div class="col-md-4">
             <div class="card border-0 rounded-4 shadow-sm p-4 h-100">
                 <i class="bi bi-box-seam fs-1" style="color:#2d6a4f;"></i>
@@ -31,12 +32,22 @@
 
         <div class="col-md-4">
             <div class="card border-0 rounded-4 shadow-sm p-4 h-100">
+                <i class="bi bi-newspaper fs-1" style="color:#2d6a4f;"></i>
+                <h5 class="fw-bold mt-3" style="color:#1a3a2a;">{{ \App\Models\Artikel::count() }} Artikel</h5>
+                <p class="text-muted small mb-3">Total artikel yang tersimpan.</p>
+                <a href="{{ route('admin.artikel.index') }}" class="btn btn-primary-pr btn-sm align-self-start">Kelola Artikel</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 rounded-4 shadow-sm p-4 h-100">
                 <i class="bi bi-file-earmark-pdf fs-1" style="color:#2d6a4f;"></i>
                 <h5 class="fw-bold mt-3" style="color:#1a3a2a;">Laporan PDF</h5>
                 <p class="text-muted small mb-3">Unduh laporan produk dalam format PDF.</p>
                 <a href="{{ route('admin.products.export.pdf') }}" class="btn btn-outline-pr btn-sm align-self-start">Export PDF</a>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card border-0 rounded-4 shadow-sm p-4 h-100">
                 <i class="bi bi-lightning-charge fs-1" style="color:#2d6a4f;"></i>
@@ -45,6 +56,7 @@
                 <a href="{{ route('admin.products.ajax') }}" class="btn btn-outline-pr btn-sm align-self-start">Buka CRUD AJAX</a>
             </div>
         </div>
+
     </div>
 </div>
 @endsection

@@ -32,6 +32,9 @@
         .dropdown-item { color: rgba(255,255,255,.8); border-radius: 6px; padding: 8px 16px; font-size: .88rem; }
         .dropdown-item:hover { background: var(--green-mid); color: var(--gold); }
 
+        /* ADMIN BADGE */
+        .admin-badge { background: var(--gold); color: var(--green-dark); font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 4px; vertical-align: middle; }
+
         /* BUTTONS */
         .btn-primary-pr { background: var(--gold); color: var(--green-dark); border: none; border-radius: 50px; padding: 10px 28px; font-weight: 600; font-size: .9rem; transition: all .2s; }
         .btn-primary-pr:hover { background: var(--gold-light); color: var(--green-dark); transform: translateY(-2px); }
@@ -98,14 +101,47 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Kontak</a>
                 </li>
+
                 @auth
-                    @if (auth()->user()->isAdmin())
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
-                                <i class="bi bi-speedometer2"></i> Dashboard Admin
+                    {{-- DROPDOWN ADMIN --}}
+                    @if(auth()->user()->isAdmin())
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{ request()->routeIs('admin.*') ? 'active' : '' }}"
+                               href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-speedometer2"></i> Admin
+                                <span class="admin-badge">ADMIN</span>
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item {{ request()->routeIs('admin.dashboard') ? 'text-warning' : '' }}"
+                                       href="{{ route('admin.dashboard') }}">
+                                        <i class="bi bi-grid me-2"></i>Dashboard
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider" style="border-color:rgba(255,255,255,.1);"></li>
+                                <li>
+                                    <a class="dropdown-item {{ request()->routeIs('admin.products.*') ? 'text-warning' : '' }}"
+                                       href="{{ route('admin.products.index') }}">
+                                        <i class="bi bi-box-seam me-2"></i>Manajemen Produk
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ request()->routeIs('admin.artikel.*') ? 'text-warning' : '' }}"
+                                       href="{{ route('admin.artikel.index') }}">
+                                        <i class="bi bi-newspaper me-2"></i>Manajemen Artikel
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ request()->routeIs('admin.contacts.*') ? 'text-warning' : '' }}"
+                                       href="{{ route('admin.contacts.index') }}">
+                                        <i class="bi bi-envelope me-2"></i>Pesan Masuk
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     @endif
+
+                    {{-- USER DROPDOWN --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle"></i> {{ auth()->user()->name }}
@@ -114,7 +150,9 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">Keluar</button>
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="bi bi-box-arrow-right me-2"></i>Keluar
+                                    </button>
                                 </form>
                             </li>
                         </ul>
@@ -124,6 +162,7 @@
                         <a class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Masuk</a>
                     </li>
                 @endauth
+
                 <li class="nav-item ms-2">
                     <a href="{{ route('products.index') }}" class="btn-primary-pr btn">Lihat Koleksi</a>
                 </li>

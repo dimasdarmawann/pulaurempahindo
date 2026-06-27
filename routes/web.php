@@ -6,6 +6,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -17,7 +18,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes — CRUD Produk (khusus admin, wajib login)
+| Admin Routes — wajib login
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -40,6 +41,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Export PDF
     Route::get('/products-export/pdf', [ProductAdminController::class, 'exportPdf'])->name('products.export.pdf');
     Route::get('/products/{product}/pdf', [ProductAdminController::class, 'exportPdfDetail'])->name('products.export.pdf.detail');
+
+    // CRUD Artikel
+    Route::prefix('artikel')->name('artikel.')->group(function () {
+        Route::get('/',            [ArtikelController::class, 'index'])->name('index');
+        Route::get('/create',      [ArtikelController::class, 'create'])->name('create');
+        Route::post('/',           [ArtikelController::class, 'store'])->name('store');
+        Route::get('/{id}/edit',   [ArtikelController::class, 'edit'])->name('edit');
+        Route::put('/{id}',        [ArtikelController::class, 'update'])->name('update');
+        Route::delete('/{id}',     [ArtikelController::class, 'destroy'])->name('destroy');
+        Route::put('/{id}/toggle', [ArtikelController::class, 'togglePublish'])->name('toggle');
+    });
 });
 
 require __DIR__ . '/auth.php';
