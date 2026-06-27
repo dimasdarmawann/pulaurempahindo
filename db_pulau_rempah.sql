@@ -34,7 +34,7 @@ CREATE TABLE `artikels` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `artikels_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `artikels` (
 
 LOCK TABLES `artikels` WRITE;
 /*!40000 ALTER TABLE `artikels` DISABLE KEYS */;
+INSERT INTO `artikels` VALUES (1,'ANDONG GREEN TEA','andong-green-tea','Andong Green Tea adalah perpaduan unik daun teh hijau pilihan dengan \r\nekstrak daun andong (Cordyline fruticosa) khas Nusantara. Menghadirkan \r\ncita rasa earthy yang menenangkan dengan sentuhan herbal tropis yang \r\nkaya antioksidan. Cocok dinikmati hangat maupun dingin, setiap tegukan \r\nmembawa ketenangan alam Indonesia ke dalam cangkirmu.','artikel/O9GC5Bry3Nk8aEuqyI3Q3iev0re9bYhvZKdLOeyX.jpg','Admin Diskominfo',1,'2026-06-26 23:19:31','2026-06-26 23:23:35'),(2,'ANDONG ORIGINAL','andong-original','Andong Original adalah minuman herbal premium berbasis ekstrak daun \r\nandong (Cordyline fruticosa) murni tanpa campuran. Menghadirkan cita \r\nrasa earthy yang kuat dengan sentuhan manis alami khas tanaman \r\ntradisional Nusantara. Dibuat dari daun andong pilihan yang dipetik \r\nsegar, diproses dengan teknologi ekstraksi dingin untuk menjaga \r\nkeutuhan nutrisi dan flavonoid alaminya. Pilihan tepat bagi kamu \r\nyang ingin merasakan kemurnian herbal Indonesia dalam setiap tegukan.','artikel/IvDg66DcjGjxi524gqST6bj8zCCRjBgjKTFlPtZC.jpg','Admin Diskominfo',1,'2026-06-26 23:23:22','2026-06-26 23:23:22'),(3,'BACARDI CARTA BLANCA','bacardi-carta-blanca','Bacardi Carta Blanca adalah rum putih ikonik yang telah menjadi \r\nstandar dunia sejak 1862. Dibuat dari molase tebu pilihan yang \r\ndifermentasi dan didistilasi dengan sempurna, menghasilkan karakter \r\nyang ringan, bersih, dan sedikit manis dengan sentuhan vanilla dan \r\nalmond. Teksturnya smooth dan mudah diminum, menjadikannya bahan \r\ndasar koktel klasik seperti Mojito dan Daiquiri yang tak tertandingi. \r\nSimbol kebebasan dalam setiap tetes.','artikel/ggsAiqxAiRVrvEgHM1iPsoGgs0eBP1jWnk2KdByk.jpg','Admin Diskominfo',1,'2026-06-26 23:24:13','2026-06-26 23:24:13'),(4,'BACARDI SPICED RUM','bacardi-spiced-rum','Bacardi Spiced Rum menghadirkan sensasi rum premium yang diinfusikan \r\ndengan perpaduan rempah-rempah pilihan — vanila, kayu manis, dan \r\ncengkeh yang berpadu harmonis. Warnanya keemasan dengan aroma hangat \r\nyang menggugah selera. Di lidah, terasa lembut dengan jejak rempah \r\nyang kompleks dan aftertaste yang panjang. Nikmati langsung dengan \r\nes batu atau campurkan dengan cola untuk pengalaman koktel yang \r\ntak terlupakan. Rum dengan karakter, untuk mereka yang berani \r\nberbeda.','artikel/lZj7SegvnmrIm8B7O8YRDn41nNHHvmB1WxSqnrEq.jpg','Admin Diskominfo',1,'2026-06-26 23:24:46','2026-06-26 23:24:46'),(5,'NUSANTARA COLD BREW 200','nusantara-cold-brew-200','Nusantara Cold Brew 200 adalah kopi cold brew premium yang lahir dari \r\nbiji kopi Nusantara terbaik — dipilih dari perkebunan lokal Indonesia \r\nyang kaya mineral dan cita rasa. Diproses dengan metode cold brew \r\nselama 20 jam pada suhu rendah untuk menghasilkan ekstrak kopi yang \r\nsmooth, rendah asam, dan penuh karakter. Setiap 200ml mengandung \r\nkonsentrasi kafein optimal yang cukup untuk mengawali harimu dengan \r\nenergi penuh. Rasakan kedalaman kopi Nusantara dalam kemasan modern \r\nyang praktis dibawa ke mana saja.','artikel/XTv9GVObsvtEcoCL93LGi21b4HDPxFBF8T0P2de8.jpg','Admin Diskominfo',1,'2026-06-26 23:25:17','2026-06-26 23:25:17'),(6,'SKYY VODKA','skyy-vodka','Skyy Vodka adalah vodka premium asal Amerika yang telah melewati \r\nproses distilasi empat kali dan filtrasi tiga kali menggunakan sistem \r\nfiltrasi batu bara aktif. Hasilnya adalah vodka dengan kemurnian \r\ntinggi — bersih, segar, dan bebas dari rasa pahit yang mengganggu. \r\nTeksturnya yang ultra-smooth menjadikannya pilihan sempurna untuk \r\ndinikmati murni dengan es maupun sebagai basis koktel modern. \r\nDengan karakter yang netral namun berkarakter, Skyy Vodka adalah \r\npilihan para penikmat vodka sejati yang menghargai kualitas.','artikel/MQRyi0od5t7Sr31eeyECRJzyP9dfNYh6KeeXUixY.jpg','Admin Diskominfo',1,'2026-06-26 23:25:43','2026-06-26 23:25:43');
 /*!40000 ALTER TABLE `artikels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,6 +98,36 @@ LOCK TABLES `cache_locks` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `company_profiles`
+--
+
+DROP TABLE IF EXISTS `company_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `company_profiles` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `nama_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `company_profiles`
+--
+
+LOCK TABLES `company_profiles` WRITE;
+/*!40000 ALTER TABLE `company_profiles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `company_profiles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `contacts`
 --
 
@@ -113,7 +144,7 @@ CREATE TABLE `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +153,6 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES (1,'john','john@pulaurempah.com',NULL,'Gin','asu','2026-06-21 05:00:56','2026-06-21 05:00:56');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +257,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +266,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_05_08_141145_create_products_table',1),(5,'2026_05_08_161006_create_contacts_table',2),(6,'2026_06_21_000001_add_role_to_users_table',3),(7,'2026_06_21_000002_add_phone_address_to_users_table',3),(8,'2026_06_21_000003_create_personal_access_tokens_table',3),(9,'2026_06_24_000001_create_artikels_table',4),(10,'2026_06_24_000002_create_produks_table',4);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_05_08_141145_create_products_table',1),(5,'2026_05_08_161006_create_contacts_table',1),(6,'2026_06_21_000001_add_role_to_users_table',1),(7,'2026_06_21_000002_add_phone_address_to_users_table',1),(8,'2026_06_21_000003_create_personal_access_tokens_table',1),(9,'2026_06_24_000001_create_artikels_table',1),(10,'2026_06_24_000002_create_produks_table',1),(11,'2026_06_27_053857_create_company_profiles_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,7 +315,7 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,7 +324,6 @@ CREATE TABLE `personal_access_tokens` (
 
 LOCK TABLES `personal_access_tokens` WRITE;
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
-INSERT INTO `personal_access_tokens` VALUES (1,'App\\Models\\User',2,'api-token','edde74e9b298af7316d77e10435d183156acd11d550e4f1ea0b0d0d55a391a24','[\"*\"]',NULL,NULL,'2026-06-21 01:46:10','2026-06-21 01:46:10'),(2,'App\\Models\\User',2,'api-token','6685ae31b71e040b24cd366844f904d37364576c9bb869cac31ea4aedd4916fc','[\"*\"]',NULL,NULL,'2026-06-21 01:46:39','2026-06-21 01:46:39'),(3,'App\\Models\\User',4,'api-token','2e0b5d11e6d66cccc3cf299574e4f66e4cf538d313dca0e78ee6632768a31508','[\"*\"]',NULL,NULL,'2026-06-21 02:09:54','2026-06-21 02:09:54'),(4,'App\\Models\\User',5,'api-token','d260d88bd25a155832839a927043d486606c68cf5e4c1f3bddec33542304055c','[\"*\"]',NULL,NULL,'2026-06-21 02:29:53','2026-06-21 02:29:53'),(5,'App\\Models\\User',5,'api-token','9155fdf5715b11c5caba68179e7c7a19e23aadaa5183ce68bb197b5c6181324f','[\"*\"]',NULL,NULL,'2026-06-21 02:30:47','2026-06-21 02:30:47'),(6,'App\\Models\\User',6,'api-token','2f061faf8207357aaea115a9ac343d897cdb2f6639e15886979e6e9b31221807','[\"*\"]',NULL,NULL,'2026-06-21 02:33:08','2026-06-21 02:33:08'),(7,'App\\Models\\User',6,'api-token','4149bfdd84c32665f1d595f1ad36cedee23de825e192489bf08eb4553870b0a0','[\"*\"]',NULL,NULL,'2026-06-21 02:41:59','2026-06-21 02:41:59'),(8,'App\\Models\\User',8,'api-token','c38ce6411e3f81d10f44eb596962452531119501e633753637d7f82439a76cdd','[\"*\"]',NULL,NULL,'2026-06-21 02:46:41','2026-06-21 02:46:41'),(9,'App\\Models\\User',9,'api-token','1c968eb299b6e4353f83f0c4ee3070ddf307d28d5f2f34ac5a8dc99137ba353f','[\"*\"]',NULL,NULL,'2026-06-21 03:36:49','2026-06-21 03:36:49'),(10,'App\\Models\\User',9,'api-token','dfddd38fe4e241c119434ffc3c604a989c179b22c0986dacb015caf5009c4115','[\"*\"]',NULL,NULL,'2026-06-23 05:03:58','2026-06-23 05:03:58');
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,7 +348,7 @@ CREATE TABLE `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +416,6 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('uzxc9u6vcSohyiM9GZF1XOkrvamgB1HU368WTPZ1',NULL,'127.0.0.1','PostmanRuntime/7.54.0','eyJfdG9rZW4iOiJNZThpSmhaMVVRTFpJRUhVNHRGb09uYUhWWVBEdUEzWlJIQ0tlRHp5IiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9sb2dpbiIsInJvdXRlIjoibG9naW4ifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119fQ==',1782216333),('XBy5AwlpGqF0RiOyyiMRzQTxaqItIghPzlUXnkSR',9,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36','eyJfdG9rZW4iOiJRWnBITmZmeXViZ3gwSWpZMGlHY3dDR1Q3Y0tSUDJLQUNJY3BSRHc3IiwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvMTI3LjAuMC4xOjgwMDBcL2FkbWluXC9jb250YWN0cyIsInJvdXRlIjoiYWRtaW4uY29udGFjdHMuaW5kZXgifSwibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiOjl9',1782218434);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,7 +440,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +449,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin Pulau Rempah','admin@pulaurempah.com',NULL,'$2y$12$bN8CIAKijJccLDfEz5xMReh7sNMEHu5.S3yEWF0qmhwzIy5c.VhLu','admin',NULL,NULL,NULL,'2026-06-21 01:02:53','2026-06-21 01:02:53'),(2,'Linda','linda09@contoh.com',NULL,'$2y$12$8NQs6ccg/HD.TFtWtquS2OGraCXfNoTF4ru6a8CwmiHoCHOWWOwzu','user','081233333333','Jakarta',NULL,'2026-06-21 01:46:10','2026-06-21 02:36:25'),(4,'Linda Kedua','linda2@contoh.com',NULL,'$2y$12$QSlwR/VcowQ7RzQb7SRDW.yk.vskS.V8rdB07k1URwBtMCiFMzHbC','user','081233333333','Jakarta',NULL,'2026-06-21 02:09:54','2026-06-21 02:09:54'),(5,'Linda','linda99@contoh.com',NULL,'$2y$12$LMHYdbbXTQBKAg0wh.Z9de8wgwL0AypB9cgZYoIfoNGDbaiC2WmGm','user','081233333333','Jakarta',NULL,'2026-06-21 02:29:53','2026-06-21 02:29:53'),(6,'Linda','linda00@contoh.com',NULL,'$2y$12$R0ZlnF8aQCzzDudlN7Bll.z/ri1g9PqMvDZcCCm4.NnoMAIMYH63.','user','081233333333','Jakarta',NULL,'2026-06-21 02:32:49','2026-06-21 02:32:49'),(7,'Linda','linda22@contoh.com',NULL,'$2y$12$efGGeyF.688GMrTk6d8gs.x8wlDTvu8qGaHIpB10gwzRANb4JMffm','user','081233333333','Jakarta',NULL,'2026-06-21 02:35:12','2026-06-21 02:35:12'),(8,'Linda Kedua','linda19@contoh.com',NULL,'$2y$12$EWFhf8I9Ef0.BXrgpqiDGefJaUTAcU7SIv2vYO8sOdl6OmTihjXVm','user','081233333333','Jakarta',NULL,'2026-06-21 02:46:41','2026-06-21 02:46:41'),(9,'dimas','dimas@pulaurempah.com',NULL,'$2y$12$KA12NiygO8uozieZYzbN9.EXFjZXKZw32iwxJPmf52taaO8iW7M3S','admin','081233333333','Jakarta',NULL,'2026-06-21 03:36:49','2026-06-21 03:36:49');
+INSERT INTO `users` VALUES (1,'dimas','dimas@pulaurempah.com',NULL,'$2y$12$g/B6.8cBlZB/zfiG31NTxuXZGAYqvbAiuClVNaXmhMGIKJNVh198C','admin',NULL,NULL,NULL,'2026-06-26 23:11:17','2026-06-26 23:11:17');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -434,4 +462,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-27 13:04:36
+-- Dump completed on 2026-06-27 13:26:20
